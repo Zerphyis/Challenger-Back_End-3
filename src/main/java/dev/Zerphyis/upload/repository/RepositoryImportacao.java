@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface RepositoryImportacao extends JpaRepository<Importacao,Long> {
     boolean existsByDataTransacao(LocalDate dataTransacao);
-    Optional<Importacao> findByDataTransacao(LocalDate dataTransacao)
+    Optional<Importacao> findByDataTransacao(LocalDate dataTransacao);
 }
