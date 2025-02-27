@@ -90,6 +90,6 @@ public class TransacaoService {
     }
 
     public List<Importacao> listarTodasImportacoes() {
-        return importacaoRepository.findAll(Sort.by(Sort.Direction.DESC, "dataTransacao"))
+        return importacaoRepository.findAll(Sort.by(Sort.Direction.DESC, "dataTransacao"));
     }
 }
