@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="|${usuario.id != null ? 'Editar' : 'Criar'} Usuário|">Criar Usuário</title>
+</head>
+
+<body>
+
+  <h1 th:text="${usuario.id != null ? 'Editar Usuário' : 'Criar Novo Usuário'}">Criar Novo Usuário</h1>
+
+  <form th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <div>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" th:field="*{nome}" placeholder="Digite seu nome" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" th:field="*{email}" placeholder="Digite seu email" required>
+    </div>
+    <div>
+      <button type="submit" th:text="|${usuario.id != null ? 'Atualizar' : 'Criar'} Usuário|"></button>
+    </div>
+  </form>
+
+  <div th:if="${mensagem}" style="color: green;">
+    <p th:text="${mensagem}"></p>
+  </div>
+
+  <br>
+  <a href="/usuarios/listar">Voltar para a lista de usuários</a>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Usuários</title>
+</head>
+
+<body>
+
+  <h1>Lista de Usuários</h1>
+
+  <div th:if="${mensagem}" style="color: green;">
+    <p th:text="${mensagem}"></p>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.id}"></td>
+        <td th:text="${usuario.nome}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td>
+          <form th:action="@{/usuarios/editar/{id}(id=${usuario.id})}" th:method="put">
+            <button type="submit">Editar</button>
+          </form>
+          <form th:action="@{/usuarios/excluir/{id}(id=${usuario.id})}" th:method="delete">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <a href="/usuarios/novo">Criar Novo Usuário</a>
+
+</body>
+
+</html>
